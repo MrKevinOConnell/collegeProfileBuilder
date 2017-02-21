@@ -9,6 +9,8 @@
 import UIKit
 
 class detailViewController: UIViewController {
+    
+    var CollegeDetail: CollegeClass!
 
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -17,22 +19,26 @@ class detailViewController: UIViewController {
     @IBOutlet weak var enrollmentTextField: UITextField!
     
     
-     var CollegeDetail:CollegeClass!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myImageView.image = CollegeDetail.image!
+        nameTextField.text = CollegeDetail.name
+        locationTextField.text =  CollegeDetail.location
+        enrollmentTextField.text = CollegeDetail.enrollment
+        
 
         
     }
-
+  
     
-    
-    myImageView.image = CollegeDetail.image!
-    nameTextField.text = CollegeDetail.name
-    locationTextField.text =  CollegeDetail.location
-    enrollmentTextField.text = CollegeDetail.enrollment
-
-    
-
+    @IBAction func saveButtonTapped(_ sender: Any)
+    {
+       CollegeDetail.image = myImageView.image!
+          CollegeDetail.name = nameTextField.text!
+         CollegeDetail.location = locationTextField.text!
+       CollegeDetail.enrollment = enrollmentTextField.text!
+    }
 }
