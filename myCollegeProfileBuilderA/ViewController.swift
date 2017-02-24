@@ -18,35 +18,28 @@ class ViewController: UIViewController , UITableViewDataSource, UITableViewDeleg
         super.viewDidLoad()
         
         
-        colleges.append(CollegeClass(Name: "Marquette", Location: "Milwaukee,Wisconsin", Enrollment:"11,745",Image:UIImage(named:"marquette")!))
-         colleges.append(CollegeClass(Name:"Wisconsin",Location: "Madison,Wisconsin",Enrollment:"43,193",Image:UIImage(named:"wisconsin")!))
-         colleges.append(CollegeClass(Name:"Michigan", Location:"Ann Arbor, Michigan", Enrollment:"44,713", Image:UIImage(named:"michigan")!))
+        
+        colleges.append(CollegeClass(Name: "Marquette", Location: "Milwaukee,Wisconsin", Enrollment:"11,745",Image:UIImage(named:"marquette")!,
+            Url: URL(string: "http://marquette.edu/")!))
+        
+        colleges.append(CollegeClass(Name:"Wisconsin",Location: "Madison,Wisconsin",Enrollment:"43,193",Image:UIImage(named:"wisconsin")!,
+            Url: URL(string: "http://www.wisc.edu/")!))
+        
+        colleges.append(CollegeClass(Name:"Michigan", Location:"Ann Arbor, Michigan", Enrollment: "44,713", Image:UIImage(named:"michigan")!, Url: URL (string:"https://umich.edu/")!))
     }
     
     
-   // func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-   // {
-      //  return myMovieObject.count
-   // }
-    
-    //required func = sets the cells in tableview
-   // func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-   // {
-      //  let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        
-     //   cell.textLabel?.text = myMovieObject[indexPath.row].title
-      //  cell.detailTextLabel?.text = myMovieObject[indexPath.row].year
-       // return cell
-    //
-
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+       //puts colleges into cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell",for: indexPath)
         
         cell.textLabel?.text = colleges[indexPath.row].name
         cell.detailTextLabel?.text = colleges[indexPath.row].location
        return cell
     }
+   //gets # of colleges
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
        return colleges.count
@@ -59,7 +52,7 @@ class ViewController: UIViewController , UITableViewDataSource, UITableViewDeleg
             myTableView.reloadData()
         }
         
-    }
+    }//adds button that allows additional colleges to be entered
     @IBAction func addButtonTapped(_ sender: Any)
     {
         let alert = UIAlertController(title: "Add college", message: nil, preferredStyle: .alert)
@@ -73,6 +66,7 @@ class ViewController: UIViewController , UITableViewDataSource, UITableViewDeleg
             (action) in
             let nameTextField = alert.textFields?[0]
             let locationTextField = alert.textFields?[1]
+            
             self.colleges.append(CollegeClass(Location: (locationTextField?.text)!, Name: (nameTextField?.text)!))
             self.myTableView.reloadData()
         }
@@ -80,13 +74,14 @@ class ViewController: UIViewController , UITableViewDataSource, UITableViewDeleg
         
         present(alert, animated: true, completion: nil)
     }
-    
+    //brings info to the detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailView = segue.destination as! detailViewController
         var selectedRow = myTableView.indexPathForSelectedRow?.row
         
         detailView.CollegeDetail = colleges[selectedRow!]    }
-
+    
+//allows data to be transfered back from detail view controller to main view controller
     override func viewDidAppear(_ animated: Bool) {
     self.myTableView.reloadData()
         
