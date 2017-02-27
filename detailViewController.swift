@@ -21,6 +21,8 @@ class detailViewController: UIViewController,UIImagePickerControllerDelegate, UI
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var enrollmentTextField: UITextField!
     
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+    }
     
     
     
@@ -76,4 +78,8 @@ class detailViewController: UIViewController,UIImagePickerControllerDelegate, UI
             self.myImageView.image = selectedImage
         }
     }
-}
+    @IBAction func tap(_ sender: UITapGestureRecognizer)
+    {
+        view.endEditing(true)
+    }
+ }

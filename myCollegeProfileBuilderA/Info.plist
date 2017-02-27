@@ -43,5 +43,7 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow usage of your library? </string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow usage of your camera?</string>
 </dict>
 </plist>

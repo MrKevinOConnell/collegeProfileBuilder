@@ -58,6 +58,10 @@ class ViewController: UIViewController , UITableViewDataSource, UITableViewDeleg
         let alert = UIAlertController(title: "Add college", message: nil, preferredStyle: .alert)
         alert.addTextField { (nameTextField) in nameTextField.placeholder = "add college name here" }
         alert.addTextField { (locationTextField) in locationTextField.placeholder = "add location of college here"}
+        
+        alert.addTextField { (enrollmentTextField) in enrollmentTextField.placeholder = "add total enrollment of college here" }
+        alert.addTextField { (urlTextField) in urlTextField.placeholder = "add url of college here"}
+      
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         
@@ -66,14 +70,20 @@ class ViewController: UIViewController , UITableViewDataSource, UITableViewDeleg
             (action) in
             let nameTextField = alert.textFields?[0]
             let locationTextField = alert.textFields?[1]
-            
-            self.colleges.append(CollegeClass(Location: (locationTextField?.text)!, Name: (nameTextField?.text)!))
+            let enrollmentTextField = alert.textFields?[2]
+            let urlTextField = alert.textFields?[3]
+            self.colleges.append(CollegeClass(Location: (locationTextField?.text)!, Name: (nameTextField?.text)!, Enrollment:(enrollmentTextField?.text)!, Url:(URL(string:(urlTextField?.text!)!))!))
             self.myTableView.reloadData()
         }
         alert.addAction(addAction)
         
         present(alert, animated: true, completion: nil)
     }
+    
+   
+
+    
+
     //brings info to the detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailView = segue.destination as! detailViewController

@@ -24,10 +24,12 @@ class CollegeClass: NSObject {
         url = Url
     }
     
-    init(Location:String, Name:String)
+    init(Location:String, Name:String, Enrollment:String, Url: URL)
     {
         location = Location
         name = Name
+        enrollment = Enrollment
+    url = Url
     }
     
 }
