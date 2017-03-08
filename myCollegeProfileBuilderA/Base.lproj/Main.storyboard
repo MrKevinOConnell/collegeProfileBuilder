@@ -149,6 +149,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5E-4f-2yy">
+                                <rect key="frame" x="172" y="585" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map"/>
+                                <connections>
+                                    <segue destination="1u4-lv-nxy" kind="show" id="ffN-t2-j90"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -172,6 +180,42 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1580" y="126.38680659670166"/>
+        </scene>
+        <!--Where is the college?-->
+        <scene sceneID="okk-br-fzn">
+            <objects>
+                <viewController id="1u4-lv-nxy" customClass="MapViewController" customModule="myCollegeProfileBuilderA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SHC-Ep-w86"/>
+                        <viewControllerLayoutGuide type="bottom" id="arf-r1-XkA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T7S-xM-IG1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HoS-0h-Dam">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Where is the college?" id="2fO-sj-WyO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="HL8-Tk-QEZ">
+                            <connections>
+                                <action selector="searchBar:" destination="1u4-lv-nxy" id="mAi-hj-fLH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="myMapView" destination="HoS-0h-Dam" id="kwm-Ns-PuG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1nR-Dh-UQE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2240.8000000000002" y="125.4872563718141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z2w-Dg-ISK">

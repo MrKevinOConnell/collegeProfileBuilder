@@ -12,7 +12,7 @@ import SafariServices
 class detailViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate
  {
     
-    var CollegeDetail: CollegeClass!
+        var CollegeDetail: CollegeClass!
 
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -35,6 +35,7 @@ class detailViewController: UIViewController,UIImagePickerControllerDelegate, UI
         enrollmentTextField.text = CollegeDetail.enrollment
          urlTextField.text = CollegeDetail.url?.absoluteString
         imagePicker.delegate = self
+        
 
     }
   
@@ -77,9 +78,25 @@ class detailViewController: UIViewController,UIImagePickerControllerDelegate, UI
             
             self.myImageView.image = selectedImage
         }
+        
+        
+        
     }
     @IBAction func tap(_ sender: UITapGestureRecognizer)
     {
         view.endEditing(true)
     }
- }
+    
+    
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+                   let mapView = segue.destination as! MapViewController
+            
+            mapView.mapCollegeClass = CollegeDetail   }
+
+            
+    
+
+    }
+
